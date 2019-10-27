@@ -24,5 +24,14 @@ namespace Lab5
         {
             InitializeComponent();
         }
+
+
+        private void GoToLogInButton_Click(object sender, RoutedEventArgs e)
+        {
+            LogInWindow logInWindow = new LogInWindow();
+            logInWindow.ShowDialog();
+            //logInWindow.Topmost = true;
+
+        }
     }
 }

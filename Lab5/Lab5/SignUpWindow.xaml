@@ -29,20 +29,20 @@
 
 
             <StackPanel VerticalAlignment="Center" Margin="5" Grid.RowSpan="2">
-                <TextBlock Text="Fullständiga namn" Foreground="Gray"/>
-                <TextBox Name="NameTxt" Margin="5,10"/>
+                <TextBlock Text="Förnamn" Foreground="Gray"/>
+                <TextBox Name="FirstNameTxt" Margin="5,10"/>
+
+                <TextBlock Text="Efternamn"  Foreground="Gray"/>
+                <TextBox Name="LastNameTxt"  Margin="5,10"/>
 
                 <TextBlock  Text="Telefonnummer" Foreground="Gray"/>
-                <TextBox  Margin="5,10"/>
+                <TextBox Name="PhoneTxt" Margin="5,10"/>
 
                 <TextBlock Text="E-post"  Foreground="Gray" />
                 <TextBox Name="EmailTxt" Margin="5,10" TextChanged="EmailTxt_TextChanged"/>
 
                 <TextBlock Text="Lösenord"  Foreground="Gray"/>
                 <PasswordBox Name="PasswordTxt" Margin="5,10"/>
-
-                <TextBlock Text="Repetera lösenordet:"  Foreground="Gray"/>
-                <PasswordBox Name="PasswordTxt2"  Margin="5,10"/>
 
             </StackPanel>
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace Lab5
     /// </summary>
     public partial class SignUpWindow : Window
     {
+        string connectionString = @"Data Source= iths.database.windows.net; Database=Group1; User Id=Group1sa; Password= Group1Password!;";
         string Email;
         public SignUpWindow()
         {
@@ -31,6 +33,26 @@ namespace Lab5
             {
                 MessageBox.Show("Skriv in giltig e-postadress", "Ogiltig email");
             }
+            else
+            {
+                using (SqlConnection sqlCon = new SqlConnection(connectionString))
+                {
+                    sqlCon.Open();
+                    SqlCommand sqlCmd = new SqlCommand("personAdd", sqlCon);
+                    sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCmd.Parameters.AddWithValue("@FirstName", FirstNameTxt.Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@LastName", LastNameTxt.Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Phonenumber", PhoneTxt.Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Email", EmailTxt.Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Password", PasswordTxt.Password.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Access", "user");
+                    sqlCmd.ExecuteNonQuery();
+                    // Registration successful message
+                    MessageBox.Show("successfull");
+                    this.Visibility = Visibility.Hidden;
+                }
+            }
+
         }
 
         private void EmailTxt_TextChanged(object sender, TextChangedEventArgs e)

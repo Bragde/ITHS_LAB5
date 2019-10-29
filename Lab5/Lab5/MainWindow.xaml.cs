@@ -33,5 +33,11 @@ namespace Lab5
             //logInWindow.Topmost = true;
 
         }
+
+        private void ContactInfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            KontaktWindow kont = new KontaktWindow();
+            kont.ShowDialog();
+        }
     }
 }

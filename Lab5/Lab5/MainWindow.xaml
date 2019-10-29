@@ -46,8 +46,8 @@
                     </Button.Template>
                 </Button>
                 <Button Name="ContactInfoButton" Cursor="Hand"
-                Content="Kontakt info" Margin="20" 
-                HorizontalAlignment="Center" FontSize="24">
+                Content="Kontakt info" Margin="20"
+                HorizontalAlignment="Center" FontSize="24" Click="ContactInfoButton_Click">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <ContentPresenter Content="{TemplateBinding Content}"/>

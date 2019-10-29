@@ -5,14 +5,14 @@ DATABAS (Daniel)
 FUNKTIONER
 	Registrera kund 
 	Logga in kund (Jonatan)
-	Söka på stugor (Jonatan)
+	SÃ¶ka pÃ¥ stugor (Jonatan)
 	Admin funktion
-	API för väderinfo
+	API fÃ¶r vÃ¤derinfo (Erik)
 
-ANVÄNDARGRÄNSSNITT
-	Startsida (väderinfo) (Danial)
+ANVÃ„NDARGRÃ„NSSNITT
+	Startsida (vÃ¤derinfo) (Danial)
 	Registreringssida
-	Sök stugor sida
+	SÃ¶k stugor sida
 	Admin sida
 	Kontakt info sida
 	

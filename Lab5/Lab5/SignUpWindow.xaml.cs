@@ -29,6 +29,7 @@ namespace Lab5
 
         private void SignupButton_Click(object sender, RoutedEventArgs e)
         {
+
             if (!VaildEmail.IsValidEmail(Email))
             {
                 MessageBox.Show("Skriv in giltig e-postadress", "Ogiltig email");

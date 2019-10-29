@@ -22,7 +22,7 @@ namespace Lab5
     {
         string connectionString = @"Data Source= iths.database.windows.net; Database=Group1; User Id=Group1sa; Password= Group1Password!;";
         string Email;
-        bool loginB = false;
+        bool signUpB = false;
         string ErrorMessage = "";
         public SignUpWindow()
         {
@@ -69,13 +69,13 @@ namespace Lab5
                     sqlCmd.Parameters.AddWithValue("@Password", PasswordTxt.Password);
                     sqlCmd.Parameters.AddWithValue("@Access", "user");
                     sqlCmd.ExecuteNonQuery();
-                    loginB = true;
+                    signUpB = true;
                     // Registration successful message
                     MessageBox.Show("successfull");
                     this.Visibility = Visibility.Hidden;
                 }
             }
-            if (!loginB)
+            if (!signUpB)
             {
                 MessageBox.Show(ErrorMessage, "fel");
                 ErrorMessage = "";

@@ -37,7 +37,7 @@
                 <TextBox Name="EmailTxt" Grid.Row="1" Margin="5,10" TextChanged="EmailTxt_TextChanged" />
 
                 <TextBlock Text="Lösenord" Grid.Row="2" Foreground="Gray"/>
-                <PasswordBox Grid.Row="2"  Margin="5,10"/>
+                <PasswordBox Name="PasswordTxt" Grid.Row="2"  Margin="5,10"/>
 
                 <Button Name="ForgotPasswordButton" Content="Glömt lösenord?" 
                            HorizontalAlignment="Right" 

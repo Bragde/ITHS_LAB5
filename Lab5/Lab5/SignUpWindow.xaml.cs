@@ -29,9 +29,14 @@ namespace Lab5
 
         private void SignupButton_Click(object sender, RoutedEventArgs e)
         {
+
             if (!VaildEmail.IsValidEmail(Email))
             {
                 MessageBox.Show("Skriv in giltig e-postadress", "Ogiltig email");
+            }
+            else if (PasswordTxt.Password.Length < 6)
+            {
+                MessageBox.Show("Lösenordet är för kort (minst 6 tecken)", "fel");
             }
             else
             {

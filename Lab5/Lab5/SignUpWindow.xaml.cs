@@ -31,7 +31,6 @@ namespace Lab5
 
         private void SignupButton_Click(object sender, RoutedEventArgs e)
         {
-
             if (PhoneTxt.Text.Length !=10)
             {
                 ErrorMessage = "Skriv in giltig Telefonnummer\n";
@@ -65,9 +64,9 @@ namespace Lab5
                     sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
                     sqlCmd.Parameters.AddWithValue("@FirstName", FirstNameTxt.Text.Trim());
                     sqlCmd.Parameters.AddWithValue("@LastName", LastNameTxt.Text.Trim());
-                    sqlCmd.Parameters.AddWithValue("@Phonenumber", PhoneTxt.Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Phonenumber", PhoneTxt.Text);
                     sqlCmd.Parameters.AddWithValue("@Email", EmailTxt.Text.Trim());
-                    sqlCmd.Parameters.AddWithValue("@Password", PasswordTxt.Password.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Password", PasswordTxt.Password);
                     sqlCmd.Parameters.AddWithValue("@Access", "user");
                     sqlCmd.ExecuteNonQuery();
                     loginB = true;
@@ -76,16 +75,12 @@ namespace Lab5
                     this.Visibility = Visibility.Hidden;
                 }
             }
-
             if (!loginB)
             {
                 MessageBox.Show(ErrorMessage, "fel");
                 ErrorMessage = "";
             }
-
-
         }
-        
 
         private void EmailTxt_TextChanged(object sender, TextChangedEventArgs e)
         {

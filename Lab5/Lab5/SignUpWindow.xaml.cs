@@ -22,6 +22,8 @@ namespace Lab5
     {
         string connectionString = @"Data Source= iths.database.windows.net; Database=Group1; User Id=Group1sa; Password= Group1Password!;";
         string Email;
+        bool loginB = false;
+        string ErrorMessage = "";
         public SignUpWindow()
         {
             InitializeComponent();
@@ -30,13 +32,29 @@ namespace Lab5
         private void SignupButton_Click(object sender, RoutedEventArgs e)
         {
 
-            if (!VaildEmail.IsValidEmail(Email))
+            if (PhoneTxt.Text.Length !=10)
             {
-                MessageBox.Show("Skriv in giltig e-postadress", "Ogiltig email");
+                ErrorMessage = "Skriv in giltig Telefonnummer\n";
+                if (!VaildEmail.IsValidEmail(Email))
+                {
+                    ErrorMessage = ErrorMessage + "Skriv in giltig e-postadress\n";
+                }
+                if (PasswordTxt.Password.Length < 6)
+                {
+                    ErrorMessage = ErrorMessage + "Lösenordet är för kort (minst 6 tecken)";
+                }
+            }
+            else if (!VaildEmail.IsValidEmail(Email))
+            {
+                ErrorMessage = "Skriv in giltig e-postadress\n";
+                if (PasswordTxt.Password.Length < 6)
+                {
+                    ErrorMessage = ErrorMessage + "Lösenordet är för kort (minst 6 tecken)";
+                }
             }
             else if (PasswordTxt.Password.Length < 6)
             {
-                MessageBox.Show("Lösenordet är för kort (minst 6 tecken)", "fel");
+                ErrorMessage = "Lösenordet är för kort (minst 6 tecken)";
             }
             else
             {
@@ -52,13 +70,22 @@ namespace Lab5
                     sqlCmd.Parameters.AddWithValue("@Password", PasswordTxt.Password.Trim());
                     sqlCmd.Parameters.AddWithValue("@Access", "user");
                     sqlCmd.ExecuteNonQuery();
+                    loginB = true;
                     // Registration successful message
                     MessageBox.Show("successfull");
                     this.Visibility = Visibility.Hidden;
                 }
             }
 
+            if (!loginB)
+            {
+                MessageBox.Show(ErrorMessage, "fel");
+                ErrorMessage = "";
+            }
+
+
         }
+        
 
         private void EmailTxt_TextChanged(object sender, TextChangedEventArgs e)
         {

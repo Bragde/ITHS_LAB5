@@ -34,6 +34,10 @@ namespace Lab5
             {
                 MessageBox.Show("Skriv in giltig e-postadress", "Ogiltig email");
             }
+            else if (PasswordTxt.Password.Length < 6)
+            {
+                MessageBox.Show("Lösenordet är för kort (minst 6 tecken)", "fel");
+            }
             else
             {
                 using (SqlConnection sqlCon = new SqlConnection(connectionString))

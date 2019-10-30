@@ -1,11 +1,11 @@
-﻿<Window x:Class="Lab5.MainWindow"
+﻿<Window x:Name="Mainwindow" x:Class="Lab5.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab5"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="mainWindowLoaded">
     <Window.Background>
         <LinearGradientBrush>
             <GradientStop Color="#FF007CFF" Offset="0"/>
@@ -38,7 +38,7 @@
                 </Button>
                 <Button Name="CabinsButton" Cursor="Hand"
                 Content="Stugor" Margin="20"
-                HorizontalAlignment="Center" FontSize="24">
+                HorizontalAlignment="Center" FontSize="24" Click="CabinsButton_Click">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <ContentPresenter Content="{TemplateBinding Content}"/>
@@ -57,5 +57,6 @@
 
             </StackPanel>
         </Grid>
+        <Label x:Name="lblWeather" Content="" HorizontalAlignment="Left" Margin="271,305,0,0" VerticalAlignment="Top" Width="265"/>
     </Grid>
 </Window>

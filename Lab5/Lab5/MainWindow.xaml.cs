@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Xml;
 
 namespace Lab5
 {
@@ -23,6 +26,7 @@ namespace Lab5
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
 
@@ -33,5 +37,53 @@ namespace Lab5
             //logInWindow.Topmost = true;
 
         }
+
+        private void CabinsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        static string CallAPI(Uri u)
+        {
+            var response = string.Empty;
+            using (var client = new HttpClient())
+            {
+                HttpResponseMessage result = client.GetAsync(u).Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    response = result.Content.ReadAsStringAsync().Result;
+                }
+            }
+            return response;
+        }
+
+        private void mainWindowLoaded(object sender, RoutedEventArgs e)
+        {
+            Uri uri = new Uri("http://www.yr.no/sted/Sverige/Jämtland/Åre/varsel.xml");
+            string xmlData = CallAPI(uri);
+            //string xPath = "/weatherdata/location/name/text()";
+            string xPathForecast = "/weatherdata/forecast/tabular/time/temperature/@value";
+
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(xmlData);
+            
+
+            /*
+            foreach(XmlNode node in xmlDoc.DocumentElement)
+            {
+                string time = node.Attributes[4].InnerText;
+                foreach(XmlNode child in node.ChildNodes)
+                {
+                    string celsius = child.InnerText;
+                    lblWeather.Content = celsius;
+                }
+            }
+            */
+            //string areaName = xmlDoc.SelectSingleNode(xPath).Value;
+            
+            string degrees = xmlDoc.SelectSingleNode(xPathForecast).Value;
+            lblWeather.Content = $"Temperatur: {degrees}";
+            
+        }
     }
 }
+

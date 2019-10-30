@@ -22,6 +22,8 @@ namespace Lab5
     {
         string connectionString = @"Data Source= iths.database.windows.net; Database=Group1; User Id=Group1sa; Password= Group1Password!;";
         string Email;
+        bool signUpB = false;
+        string ErrorMessage = "";
         public SignUpWindow()
         {
             InitializeComponent();
@@ -29,9 +31,29 @@ namespace Lab5
 
         private void SignupButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!VaildEmail.IsValidEmail(Email))
+            if (PhoneTxt.Text.Length !=10)
             {
-                MessageBox.Show("Skriv in giltig e-postadress", "Ogiltig email");
+                ErrorMessage = "Skriv in giltig Telefonnummer\n";
+                if (!VaildEmail.IsValidEmail(Email))
+                {
+                    ErrorMessage = ErrorMessage + "Skriv in giltig e-postadress\n";
+                }
+                if (PasswordTxt.Password.Length < 6)
+                {
+                    ErrorMessage = ErrorMessage + "Lösenordet är för kort (minst 6 tecken)";
+                }
+            }
+            else if (!VaildEmail.IsValidEmail(Email))
+            {
+                ErrorMessage = "Skriv in giltig e-postadress\n";
+                if (PasswordTxt.Password.Length < 6)
+                {
+                    ErrorMessage = ErrorMessage + "Lösenordet är för kort (minst 6 tecken)";
+                }
+            }
+            else if (PasswordTxt.Password.Length < 6)
+            {
+                ErrorMessage = "Lösenordet är för kort (minst 6 tecken)";
             }
             else
             {
@@ -42,17 +64,22 @@ namespace Lab5
                     sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
                     sqlCmd.Parameters.AddWithValue("@FirstName", FirstNameTxt.Text.Trim());
                     sqlCmd.Parameters.AddWithValue("@LastName", LastNameTxt.Text.Trim());
-                    sqlCmd.Parameters.AddWithValue("@Phonenumber", PhoneTxt.Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Phonenumber", PhoneTxt.Text);
                     sqlCmd.Parameters.AddWithValue("@Email", EmailTxt.Text.Trim());
-                    sqlCmd.Parameters.AddWithValue("@Password", PasswordTxt.Password.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Password", PasswordTxt.Password);
                     sqlCmd.Parameters.AddWithValue("@Access", "user");
                     sqlCmd.ExecuteNonQuery();
+                    signUpB = true;
                     // Registration successful message
                     MessageBox.Show("successfull");
                     this.Visibility = Visibility.Hidden;
                 }
             }
-
+            if (!signUpB)
+            {
+                MessageBox.Show(ErrorMessage, "fel");
+                ErrorMessage = "";
+            }
         }
 
         private void EmailTxt_TextChanged(object sender, TextChangedEventArgs e)

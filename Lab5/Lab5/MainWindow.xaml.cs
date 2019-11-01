@@ -84,7 +84,9 @@ namespace Lab5
 
         private void CabinsButton_Click(object sender, RoutedEventArgs e)
         {
+            SökStugor Stugor = new SökStugor();
 
+            Stugor.ShowDialog();
         }
     }
 }

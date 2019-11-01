@@ -38,17 +38,6 @@
 
                 <TextBlock Text="Lösenord" Grid.Row="2" Foreground="Gray"/>
                 <PasswordBox Name="PasswordTxt" Grid.Row="2"  Margin="5,10"/>
-
-                <Button Name="ForgotPasswordButton" Content="Glömt lösenord?" 
-                           HorizontalAlignment="Right" 
-                           VerticalAlignment="Bottom" Margin="5,0" 
-                           Foreground="Gray" Cursor="Hand" FontSize="8">
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <ContentPresenter Content="{TemplateBinding Content}"/>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
             </StackPanel>
 
             <Button Name="LogInButton" Content="LOGGA IN" 

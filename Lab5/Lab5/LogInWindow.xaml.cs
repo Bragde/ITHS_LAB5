@@ -44,28 +44,31 @@ namespace Lab5
 
         private void LogInButton_Click(object sender, RoutedEventArgs e)
         {
+            //Get user entered logg in ofo
             var enteredEmail = EmailTxt.Text.Trim();
             var enteredPassword = PasswordTxt.Password;
 
+            //Create and open an sql connection
             SqlConnection sqlcon = new SqlConnection(connectionString);
             sqlcon.Open();
 
-            //Select all info from user with the entered email
+            //Create a query to select all info from user with the entered email
             var query = @"SELECT * FROM person WHERE Email='" + enteredEmail + "'";
 
+            //Create an sql command and execute sql reader
             SqlCommand cmd = new SqlCommand(query, sqlcon);
-
             SqlDataReader rdr = cmd.ExecuteReader();
 
-
+            //If user is found with the entered email
             if (rdr.Read())
             {
+                //Read in information on the user from database
                 var sqlId = rdr.GetValue(0);
                 var sqlEmail = rdr.GetValue(4);
                 var sqlPassword = rdr.GetValue(5).ToString();
                 var sqlAccess = rdr.GetValue(6);
 
-                //Check if entered password matches saved password
+                //Check if entered password matches password from database
                 if (enteredPassword == sqlPassword)
                 {
                     //Load page depending on logg in user access level

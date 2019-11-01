@@ -36,7 +36,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-
+                
                 <Button Name="ContactInfoButton" Cursor="Hand"
                 Content="Kontakt info" Margin="20"
                 HorizontalAlignment="Center" FontSize="24" Click="ContactInfoButton_Click">
@@ -47,16 +47,6 @@
                     </Button.Template>
                 </Button>
 
-                <Button x:Name="AdminBtn" Cursor="Hand"
-                Content="Admin" Margin="20"
-                HorizontalAlignment="Center" FontSize="24" Click="Adminbtn_Click">
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <ContentPresenter Content="{TemplateBinding Content}"/>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                
             </StackPanel>
         </Grid>
         <Label x:Name="lblWeather" Content="" HorizontalAlignment="Left" Margin="271,305,0,0" VerticalAlignment="Top" Width="265"/>

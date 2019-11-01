@@ -58,6 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="konfirmation.xaml.cs">
+      <DependentUpon>konfirmation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="KontaktWindow.xaml.cs">
       <DependentUpon>KontaktWindow.xaml</DependentUpon>
     </Compile>
@@ -66,6 +69,9 @@
     </Compile>
     <Compile Include="SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SökStugor.xaml.cs">
+      <DependentUpon>SökStugor.xaml</DependentUpon>
     </Compile>
     <Compile Include="VaildEmail.cs" />
     <Compile Include="AdminPage.xaml.cs">
@@ -95,7 +101,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdminPage.xaml">
+    <Page Include="SökStugor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,6 +132,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BILD.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

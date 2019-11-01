@@ -44,37 +44,57 @@ namespace Lab5
 
         private void LogInButton_Click(object sender, RoutedEventArgs e)
         {
+            var enteredEmail = EmailTxt.Text.Trim();
+            var enteredPassword = PasswordTxt.Password;
+
             SqlConnection sqlcon = new SqlConnection(connectionString);
             sqlcon.Open();
-            //string query = "Select * from person Where Email = '" + EmailTxt.Text.Trim() + "' and Password = '" + PasswordTxt.Password + "'";
-            //SqlDataAdapter sqlDA = new SqlDataAdapter(query, sqlcon);
-            //DataTable datatbl = new DataTable();
-            //sqlDA.Fill(datatbl)
 
-            var query = "" +
-                "SELECT *" +
-                "FROM person" +
-                "WHERE Email = anna@andersson.com";
+            //Select all info from user with the entered email
+            var query = @"SELECT * FROM person WHERE Email='" + enteredEmail + "'";
 
             SqlCommand cmd = new SqlCommand(query, sqlcon);
 
             SqlDataReader rdr = cmd.ExecuteReader();
-                
-            if (!rdr.Read())
-                MessageBox.Show("Felaktig e-post eller lösenord");
-            
 
-            int ordAccess = rdr.GetOrdinal("Access");
 
-            var access = rdr.GetString(ordAccess);
-                           
+            if (rdr.Read())
+            {
+                var sqlId = rdr.GetValue(0);
+                var sqlEmail = rdr.GetValue(4);
+                var sqlPassword = rdr.GetValue(5).ToString();
+                var sqlAccess = rdr.GetValue(6);
+
+                //Check if entered password matches saved password
+                if (enteredPassword == sqlPassword)
+                {
+                    //Load page depending on logg in user access level
+                    switch (sqlAccess)
+                    {
+                        case "admin":
+                            var adminPage = new AdminPage();
+                            adminPage.ShowDialog();
+                            break;
+                        case "user":
+                            var cabinPage = new SökStugor();
+                            cabinPage.ShowDialog();
+                            break;
+                        default:
+                            MessageBox.Show("Användaren har ingen definierad behörighets nivå.");
+                            break;
+                    }
+                }
+                else
+                {
+                    //Show message if entered password does not match saved password
+                    MessageBox.Show("Felaktigt Användarnamn/Lösenord.");
+                }
+            }
+            else
+            {
+                //Show message if entered email is not found
+                MessageBox.Show("Felaktigt Användarnamn/Lösenord.");
+            }
         }
-
-        /*
-         
-            SökStugor Stuga = new SökStugor();
-            Stuga.ShowDialog();
-         */
-
     }
 }

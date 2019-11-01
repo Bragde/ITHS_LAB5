@@ -81,4 +81,5 @@ namespace Lab5
             string degrees = xmlDoc.SelectSingleNode(xPathForecast).Value;
             lblWeather.Content = $"Temperatur: {degrees}";
         }
+    }
 }

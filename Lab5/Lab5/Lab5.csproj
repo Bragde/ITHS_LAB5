@@ -58,6 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="konfirmation.xaml.cs">
+      <DependentUpon>konfirmation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="KontaktWindow.xaml.cs">
       <DependentUpon>KontaktWindow.xaml</DependentUpon>
     </Compile>
@@ -71,6 +74,10 @@
       <DependentUpon>SökStugor.xaml</DependentUpon>
     </Compile>
     <Compile Include="VaildEmail.cs" />
+    <Page Include="konfirmation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="KontaktWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

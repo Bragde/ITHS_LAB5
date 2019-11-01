@@ -45,20 +45,28 @@ namespace Lab5
         private void LogInButton_Click(object sender, RoutedEventArgs e)
         {
             SqlConnection sqlcon = new SqlConnection(connectionString);
-            string query = "Select * from person Where Email = '" + EmailTxt.Text.Trim() + "' and Password = '" + PasswordTxt.Password + "'";
-            SqlDataAdapter sqlDA = new SqlDataAdapter(query, sqlcon);
-            DataTable datatbl = new DataTable();
-            sqlDA.Fill(datatbl);
-            if (datatbl.Rows.Count == 1)
-            {
-                //write a log in message 
-                MessageBox.Show("!Log In Message! ^^");
-                this.Visibility = Visibility.Hidden;
-            }
-            else
-            {
+            sqlcon.Open();
+            //string query = "Select * from person Where Email = '" + EmailTxt.Text.Trim() + "' and Password = '" + PasswordTxt.Password + "'";
+            //SqlDataAdapter sqlDA = new SqlDataAdapter(query, sqlcon);
+            //DataTable datatbl = new DataTable();
+            //sqlDA.Fill(datatbl)
+
+            var query = "" +
+                "SELECT *" +
+                "FROM person" +
+                "WHERE Email = anna@andersson.com";
+
+            SqlCommand cmd = new SqlCommand(query, sqlcon);
+
+            SqlDataReader rdr = cmd.ExecuteReader();
+                
+            if (!rdr.Read())
                 MessageBox.Show("Felaktig e-post eller lösenord");
-            }
+
+            int ordAccess = rdr.GetOrdinal("Access");
+
+            var access = rdr.GetString(ordAccess);
+                           
         }
 
     }

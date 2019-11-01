@@ -87,6 +87,7 @@
             </StackPanel>
 
         </Grid>
+        <Button Content="Startsida" HorizontalAlignment="Left" Margin="162,197,0,0" VerticalAlignment="Top" Width="82" Click="Button_Click_1"/>
 
     </Grid>
 

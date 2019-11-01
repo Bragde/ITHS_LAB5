@@ -59,6 +59,8 @@ namespace Lab5
             {
                 MessageBox.Show("Felaktig e-post eller lösenord");
             }
+            SökStugor Stuga = new SökStugor();
+            Stuga.ShowDialog();
         }
 
     }

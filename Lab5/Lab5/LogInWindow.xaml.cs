@@ -51,6 +51,8 @@ namespace Lab5
             sqlDA.Fill(datatbl);
             if (datatbl.Rows.Count == 1)
             {
+                if(this.EmailTxt.Text == "Admin" && this.PasswordTxt.Password == "Admin")
+                
                 //write a log in message 
                 MessageBox.Show("!Log In Message! ^^");
                 this.Visibility = Visibility.Hidden;

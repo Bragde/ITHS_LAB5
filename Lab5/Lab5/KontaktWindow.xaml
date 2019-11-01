@@ -26,7 +26,7 @@
             </Rectangle.Effect>
         </Rectangle>
 
-        <Grid Width="250" Height="290">
+        <Grid Width="250" Height="290"> 
             <TextBlock ><Run Text=" "/><Run Text="Kontakta oss:"/><LineBreak/><Run/><LineBreak/><Run Text="Har du någon fråga eller fundering kan "/><Run Text="du"/><LineBreak/><Run Text="kontakta oss på någon av de nedanstånde"/><LineBreak/><Run Text="kontaktinfon:"/><LineBreak/><LineBreak/><Run Text="Email: NissesStugby@gmail.com"/><LineBreak/><Run/><LineBreak/><Run Text="Telefonnummer: 070-1234567"/><LineBreak/><Run/><LineBreak/><Run Text="Tack för att du kontaktade Nisses Stugby!"/><LineBreak/><Run Text=""/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
         </Grid>
     </Grid>

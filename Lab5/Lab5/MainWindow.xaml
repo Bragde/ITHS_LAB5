@@ -36,6 +36,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
+                
                 <Button Name="CabinsButton" Cursor="Hand"
                 Content="Stugor" Margin="20"
                 HorizontalAlignment="Center" FontSize="24" Click="CabinsButton_Click">

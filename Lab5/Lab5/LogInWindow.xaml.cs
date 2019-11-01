@@ -62,6 +62,9 @@ namespace Lab5
                 
             if (!rdr.Read())
                 MessageBox.Show("Felaktig e-post eller lösenord");
+            }
+            SökStugor Stuga = new SökStugor();
+            Stuga.ShowDialog();
 
             int ordAccess = rdr.GetOrdinal("Access");
 

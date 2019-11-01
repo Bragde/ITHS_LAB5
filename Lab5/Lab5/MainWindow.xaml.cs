@@ -58,35 +58,22 @@ namespace Lab5
         {
             Uri uri = new Uri("http://www.yr.no/sted/Sverige/Jämtland/Åre/varsel.xml");
             string xmlData = CallAPI(uri);
-            //string xPath = "/weatherdata/location/name/text()";
+            
             string xPathForecast = "/weatherdata/forecast/tabular/time/temperature/@value";
 
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(xmlData);
 
-
-            /*
-            foreach(XmlNode node in xmlDoc.DocumentElement)
-            {
-                string time = node.Attributes[4].InnerText;
-                foreach(XmlNode child in node.ChildNodes)
-                {
-                    string celsius = child.InnerText;
-                    lblWeather.Content = celsius;
-                }
-            }
-            */
-            //string areaName = xmlDoc.SelectSingleNode(xPath).Value;
-
+            
             string degrees = xmlDoc.SelectSingleNode(xPathForecast).Value;
-            lblWeather.Content = $"Temperatur: {degrees}";
+            lblWeather.Content = $"Temperatur: {degrees} grader";
         }
 
-        private void CabinsButton_Click(object sender, RoutedEventArgs e)
+        private void Adminbtn_Click(object sender, RoutedEventArgs e)
         {
-            SökStugor Stugor = new SökStugor();
-
-            Stugor.ShowDialog();
+            AdminPage adminPage = new AdminPage();
+            adminPage.ShowDialog();
+            //logInWindow.Topmost = true;
         }
     }
 }

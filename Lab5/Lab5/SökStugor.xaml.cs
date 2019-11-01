@@ -25,6 +25,11 @@ namespace Lab5
 
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MainWindow Main = new MainWindow();
+            Main.ShowDialog();
+        }
     }
 
 }

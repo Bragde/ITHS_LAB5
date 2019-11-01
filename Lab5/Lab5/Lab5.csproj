@@ -74,10 +74,9 @@
       <DependentUpon>SökStugor.xaml</DependentUpon>
     </Compile>
     <Compile Include="VaildEmail.cs" />
-    <Page Include="konfirmation.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="AdminPage.xaml.cs">
+      <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
     <Page Include="KontaktWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

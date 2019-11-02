@@ -75,5 +75,14 @@ namespace Lab5
             adminPage.ShowDialog();
             //logInWindow.Topmost = true;
         }
+
+        private void AdminButtonClicked(object sender, RoutedEventArgs e)
+        
+            {
+                AdminPage adminPage = new AdminPage();
+                adminPage.ShowDialog();
+                //logInWindow.Topmost = true;
+            }
+        
     }
 }

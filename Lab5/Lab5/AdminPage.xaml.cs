@@ -68,7 +68,7 @@ namespace Lab5
                     
                 }
             }
-            Stuga1.Content = output;
+            //Stuga1.Content = output;
         }
 
         private void DeleteId(object sender, RoutedEventArgs e)
